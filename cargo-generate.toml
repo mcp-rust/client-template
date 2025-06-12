@@ -1,0 +1,22 @@
+[template]
+cargo_generate_version = ">=0.10.0"
+
+[placeholders.project-name]
+type = "string"
+prompt = "What is the name of your MCP client?"
+regex = "^[a-zA-Z][a-zA-Z0-9_-]*$"
+
+[placeholders.description]
+type = "string"
+prompt = "Brief description of your MCP client"
+default = "A Model Context Protocol (MCP) client implementation in Rust"
+
+[placeholders.authors]
+type = "string"
+prompt = "Author name(s)"
+default = "Your Name <your.email@example.com>"
+
+[placeholders.github-username]
+type = "string"
+prompt = "Your GitHub username"
+regex = "^[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]$"

@@ -1,0 +1,38 @@
+[package]
+name = "{{project-name}}"
+version = "0.1.0"
+edition = "2021"
+authors = ["{{authors}}"]
+description = "{{description}}"
+license = "MIT"
+repository = "https://github.com/{{github-username}}/{{project-name}}"
+documentation = "https://docs.rs/{{project-name}}"
+keywords = ["mcp", "model-context-protocol", "ai", "client"]
+categories = ["api-bindings", "development-tools"]
+
+[dependencies]
+mcp-protocol-sdk = "0.1.0"
+tokio = { version = "1.0", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+anyhow = "1.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+clap = { version = "4.0", features = ["derive"] }
+
+# Optional dependencies
+reqwest = { version = "0.12", optional = true, features = ["json"] }
+
+[features]
+default = ["stdio"]
+stdio = ["mcp-protocol-sdk/stdio"]
+http = ["mcp-protocol-sdk/http", "reqwest"]
+websocket = ["mcp-protocol-sdk/websocket"]
+
+[[bin]]
+name = "{{project-name}}"
+path = "src/main.rs"
+
+[package.metadata.template]
+cargo_generate_version = ">= 0.10.0"
+include = ["**/*", "!target", "!.git"]
